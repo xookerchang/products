@@ -1,13 +1,17 @@
+import os # operating system
 
-
-products = []
-with open('products.csv', 'r', encoding = 'utf-8'):
-	for line in f:
-		if '商品,價格' in line:
-			continue # 繼續
-		name, price = line.strip().split(',')  # strip delete /n ; split切割完後結果是清單 restore name, price
-		products.append([name , price])
-print(products)
+products = [] # 無論找不找得到檔案 都要建立products list
+if os.path.isfile('products.csv'):
+	print('yes! we found the file')
+    with open('products.csv', 'r', encoding = 'utf-8'):
+	    for line in f:
+		    if '商品,價格' in line:
+			    continue # 繼續
+		    name, price = line.strip().split(',')  # strip delete /n ; split切割完後結果是清單 restore name, price
+		    products.append([name , price])
+    print(products)
+else:
+	print('cannot found the file')
 
 # 讓使用者輸入
 
